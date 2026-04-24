@@ -6,6 +6,10 @@ on:
     tags:
       - "v*"
 
+# Permisos necesarios para crear la release
+permissions:
+  contents: write
+
 jobs:
 
   build:

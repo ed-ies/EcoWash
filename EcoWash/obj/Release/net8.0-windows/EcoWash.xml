@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EcoWash</name>
+    </assembly>
+    <members>
+        <member name="T:EcoWash.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:EcoWash.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:EcoWash.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:EcoWash.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:EcoWash.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EcoWash.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:EcoWash.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:EcoWash.Services.ServiceLavadora">
+            <summary>
+            Proporciona servicios de acceso a datos para la entidad <see cref="T:EcoWash.Models.Lavadora"/>,
+            implementando operaciones CRUD sobre la base de datos.
+            </summary>
+        </member>
+        <member name="M:EcoWash.Services.ServiceLavadora.#ctor">
+            <summary>
+            Inicializa una nueva instancia del servicio <see cref="T:EcoWash.Services.ServiceLavadora"/>.
+            </summary>
+        </member>
+        <member name="M:EcoWash.Services.ServiceLavadora.Listar">
+            <summary>
+            Obtiene la lista completa de lavadoras registradas en el sistema.
+            </summary>
+            <returns>
+            Una tarea asincrónica que devuelve una lista de objetos <see cref="T:EcoWash.Models.Lavadora"/>
+            ordenados por su identificador.
+            </returns>
+        </member>
+        <member name="M:EcoWash.Services.ServiceLavadora.Listar(System.Int32)">
+            <summary>
+            Obtiene una lavadora específica a partir de su identificador.
+            </summary>
+            <param name="id">
+            Identificador único de la lavadora que se desea consultar.
+            </param>
+            <returns>
+            Una tarea asincrónica que devuelve la lavadora encontrada,
+            o <c>null</c> si no existe una lavadora con el identificador indicado.
+            </returns>
+        </member>
+        <member name="M:EcoWash.Services.ServiceLavadora.Insertar(EcoWash.Models.Lavadora)">
+            <summary>
+            Inserta una nueva lavadora en la base de datos.
+            </summary>
+            <param name="lavadora">
+            Objeto <see cref="T:EcoWash.Models.Lavadora"/> que contiene la información de la nueva lavadora.
+            </param>
+            <returns>
+            Una tarea asincrónica que devuelve la entidad <see cref="T:EcoWash.Models.Lavadora"/> insertada,
+            incluyendo su identificador generado.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Se produce cuando el parámetro <paramref name="lavadora"/> es <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:EcoWash.Services.ServiceLavadora.Actualizar(EcoWash.Models.Lavadora)">
+            <summary>
+            Actualiza los datos de una lavadora existente.
+            </summary>
+            <param name="lavadora">
+            Objeto <see cref="T:EcoWash.Models.Lavadora"/> que contiene los datos actualizados.
+            </param>
+            <returns>
+            Una tarea asincrónica que devuelve <c>true</c> si la actualización se realizó correctamente,
+            o <c>false</c> si la lavadora no existe.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Se produce cuando el parámetro <paramref name="lavadora"/> es <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:EcoWash.Services.ServiceLavadora.Borrar(System.Int32)">
+            <summary>
+            Elimina una lavadora de la base de datos a partir de su identificador.
+            </summary>
+            <param name="id">
+            Identificador único de la lavadora que se desea eliminar.
+            </param>
+            <returns>
+            Una tarea asincrónica que devuelve <c>true</c> si la lavadora fue eliminada,
+            o <c>false</c> si no se encontró la lavadora.
+            </returns>
+        </member>
+        <member name="M:EcoWash.Services.ServiceLavadora.Dispose">
+            <summary>
+            Libera los recursos utilizados por la instancia actual.
+            </summary>
+        </member>
+        <member name="M:EcoWash.Services.ServiceLavadora.Dispose(System.Boolean)">
+            <summary>
+            Libera los recursos administrados y no administrados.
+            </summary>
+            <param name="disposing">
+            Indica si el método fue llamado explícitamente desde <see cref="M:EcoWash.Services.ServiceLavadora.Dispose"/>.
+            </param>
+        </member>
+        <member name="M:EcoWash.Services.ServiceLavadora.Finalize">
+            <summary>
+            Finalizador que asegura la liberación de recursos si no se llamó a <see cref="M:EcoWash.Services.ServiceLavadora.Dispose"/>.
+            </summary>
+        </member>
+        <member name="T:EcoWash.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:EcoWash.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:EcoWash.Views.PanelTiendasView">
+            <summary>
+            Lógica de interacción para PanelTiendasView.xaml
+            </summary>
+            <summary>
+            PanelTiendasView
+            </summary>
+        </member>
+        <member name="M:EcoWash.Views.PanelTiendasView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:EcoWash.Views.PrincipalView">
+            <summary>
+            Lógica de interacción para PrincipalView.xaml
+            </summary>
+            <summary>
+            PrincipalView
+            </summary>
+        </member>
+        <member name="M:EcoWash.Views.PrincipalView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:EcoWash.Views.TiendasCrudView">
+            <summary>
+            Lógica de interacción para TiendasCrudView.xaml
+            </summary>
+            <summary>
+            TiendasCrudView
+            </summary>
+        </member>
+        <member name="M:EcoWash.Views.TiendasCrudView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

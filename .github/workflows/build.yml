@@ -1,6 +1,6 @@
-name: Build WPF Linux
+name: Build WPF Windows
 
-# Se activa solo cuando se crea un TAG tipo v1.0.0
+# Ejecutar solo cuando se crea un tag tipo v1.0.0
 on:
   push:
     tags:
@@ -10,57 +10,58 @@ jobs:
 
   build:
 
-    # Ejecutar en Linux
-    runs-on: ubuntu-latest
+    # Usamos runner Windows oficial de GitHub
+    runs-on: windows-latest
 
-    # Configuración de compilación
     env:
       BUILD_CONFIGURATION: Release
 
     steps:
 
-    # Descarga el repositorio
+    # Descargar repositorio
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # Instala .NET 8
+    # Instalar .NET 8
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
 
-    # Descarga dependencias NuGet
+    # Restaurar dependencias NuGet
     - name: Restore dependencies
       run: dotnet restore EcoWash.sln
 
-    # Ejecuta los tests
+    # Ejecutar tests unitarios
     - name: Run tests
-      run: dotnet test EcoWash.sln --configuration $BUILD_CONFIGURATION
+      run: dotnet test EcoWash.sln --configuration $env:BUILD_CONFIGURATION
 
-    # Genera el .exe portable
+    # Publicar aplicación WPF
     - name: Publish Windows build
       run: |
-        dotnet publish EcoWash/EcoWash.csproj \
-          -c $BUILD_CONFIGURATION \
-          -r win-x64 \
-          --self-contained true \
-          /p:PublishSingleFile=true \
-          /p:IncludeNativeLibrariesForSelfExtract=true \
+        dotnet publish EcoWash/EcoWash.csproj `
+          -c $env:BUILD_CONFIGURATION `
+          -r win-x64 `
+          --self-contained true `
+          /p:PublishSingleFile=true `
+          /p:IncludeNativeLibrariesForSelfExtract=true `
           -o publish
 
-    # Crear ZIP
+    # Crear ZIP con el ejecutable
     - name: Create ZIP package
       run: |
-        zip -r EcoWash-${{ github.ref_name }}.zip publish/
+        Compress-Archive `
+          -Path publish\* `
+          -DestinationPath EcoWash-${{ github.ref_name }}.zip
 
-    # Subir artifact
+    # Subir ZIP como artifact
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: EcoWash-${{ github.ref_name }}
         path: EcoWash-*.zip
 
-    # Crear Release automáticamente
+    # Crear Release automática en GitHub
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
